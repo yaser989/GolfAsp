@@ -35,6 +35,8 @@
             this.GameTimer = new System.Windows.Forms.Timer(this.components);
             this.ball = new System.Windows.Forms.PictureBox();
             this.forcetxt = new System.Windows.Forms.Label();
+            this.meters = new System.Windows.Forms.Label();
+            this.gameOver = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Gol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ball)).BeginInit();
@@ -99,12 +101,37 @@
             this.forcetxt.Text = "force: ";
             this.forcetxt.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // meters
+            // 
+            this.meters.AutoSize = true;
+            this.meters.Font = new System.Drawing.Font("Consolas", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.meters.Location = new System.Drawing.Point(13, 13);
+            this.meters.Name = "meters";
+            this.meters.Size = new System.Drawing.Size(135, 33);
+            this.meters.TabIndex = 4;
+            this.meters.Tag = "txtMeters";
+            this.meters.Text = "meters: ";
+            this.meters.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // gameOver
+            // 
+            this.gameOver.AutoSize = true;
+            this.gameOver.Font = new System.Drawing.Font("Consolas", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gameOver.ForeColor = System.Drawing.Color.Firebrick;
+            this.gameOver.Location = new System.Drawing.Point(244, 297);
+            this.gameOver.Name = "gameOver";
+            this.gameOver.Size = new System.Drawing.Size(218, 47);
+            this.gameOver.TabIndex = 5;
+            this.gameOver.Text = "GAME OVER";
+            // 
             // Golf
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.SeaGreen;
             this.ClientSize = new System.Drawing.Size(739, 630);
+            this.Controls.Add(this.gameOver);
+            this.Controls.Add(this.meters);
             this.Controls.Add(this.forcetxt);
             this.Controls.Add(this.Gol);
             this.Controls.Add(this.ball);
@@ -130,6 +157,8 @@
         private System.Windows.Forms.Timer GameTimer;
         private System.Windows.Forms.PictureBox ball;
         private System.Windows.Forms.Label forcetxt;
+        private System.Windows.Forms.Label meters;
+        private System.Windows.Forms.Label gameOver;
     }
 }
 
