@@ -14,7 +14,7 @@ namespace golf
     {
 
        
-        bool clickSpasse, isGameOver;
+        bool clickSpasse, isGameOver, enter;
 
        
         int score;
@@ -23,7 +23,7 @@ namespace golf
         int meter;
 
         int force = 100;
-        int forceSpeed = 2;
+        int forceSpeed = 1;
 
 
         public Golf()
@@ -50,7 +50,19 @@ namespace golf
 
         private void MainTimerEvent(object sender, EventArgs e)
         {
-           
+
+            txtHowToPlay.Size = this.ClientSize ;
+        
+            if (enter == true)
+            {
+                txtHowToPlay.Visible = false;
+                howToPlay.Visible = false;
+               
+            }
+            
+
+
+
            if (meter == 0)
             {
                 // set the position of the game
@@ -64,14 +76,14 @@ namespace golf
             }
 
 
-            txtScore.Text = "Score: " + score;
+       
 
             forcetxt.Text = "Force: " + force;
 
             meters.Text = "Meters: " + meter;
 
             gameOver.Visible = false;
-
+            Winner.Visible = false;
 
 
             force -= forceSpeed;
@@ -136,7 +148,7 @@ namespace golf
                         {
                             GameTimer.Stop();
                             isGameOver = true;
-                            txtScore.Text = "Score: " + score + Environment.NewLine + "you win!";
+                            Winner.Visible=true;
                             ball.Visible = false;
                             
                         }
@@ -159,11 +171,21 @@ namespace golf
                 clickSpasse = true;
 
             }
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                enter = true;
+            }
+
         }
 
         private void KeyIsUp(object sender, KeyEventArgs e)
         {
 
+            if (e.KeyCode == Keys.Enter)
+            {
+                enter = false;
+            }
 
             if (e.KeyCode == Keys.Space)
             {
@@ -183,18 +205,30 @@ namespace golf
 
         }
 
+        private void txtScore_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void howToPlay_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void RestartGame()
         {
             clickSpasse = false;
             isGameOver = false;
             gameOver.Visible = false;
-        
-      
-            score = 0;
+            Winner.Visible = false;
+            enter = true;
+
+
+
             meter = 0;
            
 
-            txtScore.Text = "Score: " + score;
+            Winner.Text = "Score: " + score;
 
             forcetxt.Text = "Force: " + force;
 

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.txtScore = new System.Windows.Forms.Label();
+            this.Winner = new System.Windows.Forms.Label();
             this.Gol = new System.Windows.Forms.PictureBox();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.GameTimer = new System.Windows.Forms.Timer(this.components);
@@ -37,23 +37,27 @@
             this.forcetxt = new System.Windows.Forms.Label();
             this.meters = new System.Windows.Forms.Label();
             this.gameOver = new System.Windows.Forms.Label();
+            this.txtHowToPlay = new System.Windows.Forms.PictureBox();
+            this.howToPlay = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Gol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ball)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHowToPlay)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtScore
+            // Winner
             // 
-            this.txtScore.AllowDrop = true;
-            this.txtScore.Font = new System.Drawing.Font("Consolas", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtScore.ForeColor = System.Drawing.Color.Black;
-            this.txtScore.Location = new System.Drawing.Point(424, 9);
-            this.txtScore.Name = "txtScore";
-            this.txtScore.Size = new System.Drawing.Size(306, 151);
-            this.txtScore.TabIndex = 0;
-            this.txtScore.Text = "Score: 0";
-            this.txtScore.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.txtScore.UseMnemonic = false;
+            this.Winner.AllowDrop = true;
+            this.Winner.Font = new System.Drawing.Font("Consolas", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Winner.ForeColor = System.Drawing.Color.Navy;
+            this.Winner.Location = new System.Drawing.Point(191, 243);
+            this.Winner.Name = "Winner";
+            this.Winner.Size = new System.Drawing.Size(306, 151);
+            this.Winner.TabIndex = 0;
+            this.Winner.Text = "YOU WIN!";
+            this.Winner.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Winner.UseMnemonic = false;
+            this.Winner.Click += new System.EventHandler(this.txtScore_Click);
             // 
             // Gol
             // 
@@ -124,18 +128,38 @@
             this.gameOver.TabIndex = 5;
             this.gameOver.Text = "GAME OVER";
             // 
+            // txtHowToPlay
+            // 
+            this.txtHowToPlay.Location = new System.Drawing.Point(12, 22);
+            this.txtHowToPlay.Name = "txtHowToPlay";
+            this.txtHowToPlay.Size = new System.Drawing.Size(708, 435);
+            this.txtHowToPlay.TabIndex = 6;
+            this.txtHowToPlay.TabStop = false;
+            // 
+            // howToPlay
+            // 
+            this.howToPlay.Font = new System.Drawing.Font("Consolas", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.howToPlay.Location = new System.Drawing.Point(23, 46);
+            this.howToPlay.Name = "howToPlay";
+            this.howToPlay.Size = new System.Drawing.Size(681, 392);
+            this.howToPlay.TabIndex = 7;
+            this.howToPlay.Text = "Press space to shoot the ball.\r\n\r\n \r\npress enter to start the game.";
+            this.howToPlay.Click += new System.EventHandler(this.howToPlay_Click);
+            // 
             // Golf
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.SeaGreen;
             this.ClientSize = new System.Drawing.Size(739, 630);
+            this.Controls.Add(this.howToPlay);
+            this.Controls.Add(this.txtHowToPlay);
             this.Controls.Add(this.gameOver);
             this.Controls.Add(this.meters);
             this.Controls.Add(this.forcetxt);
             this.Controls.Add(this.Gol);
             this.Controls.Add(this.ball);
-            this.Controls.Add(this.txtScore);
+            this.Controls.Add(this.Winner);
             this.Name = "Golf";
             this.Text = "Golf";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -144,6 +168,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Gol)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ball)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHowToPlay)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,7 +176,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label txtScore;
+        private System.Windows.Forms.Label Winner;
         private System.Windows.Forms.PictureBox Gol;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.Timer GameTimer;
@@ -159,6 +184,8 @@
         private System.Windows.Forms.Label forcetxt;
         private System.Windows.Forms.Label meters;
         private System.Windows.Forms.Label gameOver;
+        private System.Windows.Forms.PictureBox txtHowToPlay;
+        private System.Windows.Forms.Label howToPlay;
     }
 }
 
