@@ -57,7 +57,7 @@
             this.Winner.Text = "YOU WIN!";
             this.Winner.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Winner.UseMnemonic = false;
-            this.Winner.Click += new System.EventHandler(this.txtScore_Click);
+          
             // 
             // Gol
             // 

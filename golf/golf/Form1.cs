@@ -15,13 +15,7 @@ namespace golf
 
        
         bool clickSpasse, isGameOver, enter;
-
-       
-        int score;
-
-
         int meter;
-
         int force = 100;
         int forceSpeed = 1;
 
@@ -57,11 +51,8 @@ namespace golf
             {
                 txtHowToPlay.Visible = false;
                 howToPlay.Visible = false;
-               
             }
             
-
-
 
            if (meter == 0)
             {
@@ -76,12 +67,8 @@ namespace golf
             }
 
 
-       
-
             forcetxt.Text = "Force: " + force;
-
             meters.Text = "Meters: " + meter;
-
             gameOver.Visible = false;
             Winner.Visible = false;
 
@@ -95,44 +82,50 @@ namespace golf
 
 
 
-            if (clickSpasse == true && force > 50)
+            if (clickSpasse == true && force > 30 && force < 60)
             {
-                meter++;
-
-                if (meter > 1)
-                {
-                    ball.Top -= 10;
-                    meter++;
-                }
+                meter = 200;
                 ball.Top -= 200;
-                score++;
-               
-                clickSpasse = false;
-               
-                
+                clickSpasse = false;   
             }
-            else if (clickSpasse == true && force < 50)
+
+
+            else if (clickSpasse == true && force >= 60 && force <= 80)
             {
-
-                ball.Top -= 30;
-                score++;
-                meter++;
+                meter = 320;
+                ball.Top = Gol.Location.Y;
                 clickSpasse = false;
-               
-
             }
+
+
+
+            else if (clickSpasse == true && force > 1 && force <= 30)
+            {
+                ball.Top -= 100;
+                meter += 100;
+                clickSpasse = false;
+            }
+
             else if (clickSpasse == true && force == 0)
             {
                 clickSpasse = false;
             }
-          
+
+            else if (clickSpasse == true && force > 80)
+            {
+                gameOver.Visible = true;
+                GameTimer.Stop();
+                isGameOver = true;
+                ball.Visible = false;
+            }
+
+
 
             if (ball.Top < 0 ||ball.Top + ball.Height > this.ClientSize.Height )
             {
                 gameOver.Visible = true;
                 GameTimer.Stop();
                 isGameOver = true;
-
             }
 
 
@@ -141,7 +134,6 @@ namespace golf
             {
                 if (x is PictureBox)
                 {
-
                     if ((string)x.Tag == "gol")
                     {
                         if (ball.Bounds.IntersectsWith(x.Bounds))
@@ -150,33 +142,25 @@ namespace golf
                             isGameOver = true;
                             Winner.Visible=true;
                             ball.Visible = false;
-                            
+                            meters.Text = "Meters: " +meter; 
                         }
                     }
-
-
                 }
             }
-          
-           
-
         }
 
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
          
-
             if(e.KeyCode == Keys.Space)
             {
                 clickSpasse = true;
-
             }
 
             if (e.KeyCode == Keys.Enter)
             {
                 enter = true;
             }
-
         }
 
         private void KeyIsUp(object sender, KeyEventArgs e)
@@ -189,8 +173,7 @@ namespace golf
 
             if (e.KeyCode == Keys.Space)
             {
-                clickSpasse = false;
-                
+                clickSpasse = false;   
             }
 
             if (e.KeyCode == Keys.Enter && isGameOver == true)
@@ -205,10 +188,6 @@ namespace golf
 
         }
 
-        private void txtScore_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void howToPlay_Click(object sender, EventArgs e)
         {
@@ -222,15 +201,9 @@ namespace golf
             gameOver.Visible = false;
             Winner.Visible = false;
             enter = true;
-
-
-
             meter = 0;
-           
-
-            Winner.Text = "Score: " + score;
-
             forcetxt.Text = "Force: " + force;
+
 
             foreach(Control x in this.Controls)
             {
@@ -251,10 +224,9 @@ namespace golf
 
             GameTimer.Start();
 
-
         }
 
-            }
+    }
 
         
 
